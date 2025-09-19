@@ -30,21 +30,21 @@ A full-stack Notes Management application built with **React**, **Vite**, **Expr
 ---
 
 ## Setup Instructions
-
+```bash 
 ### Backend
 
 1. Clone the repository and navigate to backend:
 
-```bash 
+
 git clone <repo-url>
 cd backend
 
-Install dependencies:
+2. Install dependencies:
 
 npm install
 
 
-Create a .env file in backend:
+3. Create a .env file in backend:
 
 MONGO_URI=<Your MongoDB connection string>
 JWT_SECRET=<Your secret key>
@@ -53,7 +53,7 @@ PORT=5000
 NODE_ENV=development
 
 
-Run the backend server:
+4. Run the backend server:
 
 npm run dev
 bash```
@@ -64,4 +64,17 @@ bash```
 ```bash
 cd frontend
 
+2. Install dependencies
+
+npm install
+
+
+3. Create a .env file in frontend
+
+VITE_API_URL=<Your backend URL, e.g. https://notes-manager-system.vercel.app>
+
+
+4. Run the frontend
+
+npm run dev
 
