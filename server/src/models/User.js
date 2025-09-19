@@ -1,25 +1,13 @@
-// const mongoose = require('mongoose');
+// backend/src/models/User.js
+import mongoose from 'mongoose'
 
-// const userSchema = mongoose.Schema(
-//   {
-//     email: { type: String, required: true, unique: true },
-//     password: { type: String, required: true },
-//     isAdmin: { type: Boolean, default: false },
-//   },
-//   { timestamps: true }
-// );
+const userSchema = new mongoose.Schema(
+  {
+    email: { type: String, required: true, unique: true, lowercase: true },
+    password: { type: String, required: true },
+    isAdmin: { type: Boolean, default: false },
+  },
+  { timestamps: true }
+)
 
-// module.exports = mongoose.model('User', userSchema);
-
-import mongoose from 'mongoose';
-
-const userSchema = new mongoose.Schema({
-  email: { type: String, required: true, unique: true },
-  password: { type: String, required: true },
-  isAdmin: { type: Boolean, default: false },
-});
-
-const User = mongoose.model('User', userSchema);
-
-export default User;
-
+export default mongoose.model('User', userSchema)

@@ -30,20 +30,14 @@ export const AuthProvider = ({ children }) => {
   }
 
   const login = async ({ email, password }) => {
-  try {
-    const res = await authAPI.loginUser({ email, password });
-    const { data } = res;
+    const res = await authAPI.loginUser({ email, password })
+    const { data } = res
     if (data?.token) {
-      localStorage.setItem('token', data.token);
-      setUser(data.user || { email });
+      localStorage.setItem('token', data.token)
+      setUser(data.user || { email })
     }
-    return data;
-  } catch (err) {
-    console.error('Login failed', err);
-    throw err;
+    return data
   }
-}
-
 
   const logout = () => {
     localStorage.removeItem('token')
