@@ -1,12 +1,12 @@
-import express from 'express'
-import { getAllUsers, getAllNotes } from '../controllers/adminController.js'
+// import express from 'express'
+// import { getAllUsers, getAllNotes } from '../controllers/adminController.js'
 
-const router = express.Router()
+// const router = express.Router()
 
-router.get('/users', getAllUsers)      // <-- error likely here
-router.get('/notes', getAllNotes)      // <-- or here
+// router.get('/users', getAllUsers)      // <-- error likely here
+// router.get('/notes', getAllNotes)      // <-- or here
 
-export default router
+// export default router
 
 // import express from 'express'
 // import { protect, admin } from '../middleware/authMiddleware.js'
@@ -20,3 +20,16 @@ export default router
 // router.delete('/notes/:id', protect, admin, deleteNoteByAdmin) // Delete note by admin
 
 // export default router
+
+
+import express from 'express';
+import { protect, admin } from '../middleware/authMiddleware.js';
+import { getAllUsers, getAllNotes, deleteNoteByAdmin } from '../controllers/adminController.js';
+
+const router = express.Router();
+
+router.get('/users', protect, admin, getAllUsers);
+router.get('/notes', protect, admin, getAllNotes);
+router.delete('/notes/:id', protect, admin, deleteNoteByAdmin);
+
+export default router;

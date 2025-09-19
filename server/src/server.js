@@ -75,15 +75,10 @@ app.use('/api/notes', notesRoutes);
 app.use('/api/admin', adminRoutes);
 
 app.get("/", (req, res) => {
-  res.send("✅ Server is running");
+  res.send("✅ Server is running on Vercel!");
 });
 
-// 404 handler
-app.use((req, res, next) => {
-  res.status(404).json({ message: 'Route not found' });
-});
-
-// Global error handler
+// Error handler
 app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(res.statusCode || 500).json({
@@ -91,16 +86,12 @@ app.use((err, req, res, next) => {
   });
 });
 
-// MongoDB connection (reuse for serverless)
-let conn = null;
-async function connectDB() {
-  if (conn) return conn;
-  conn = await mongoose.connect(process.env.MONGO_URI);
-  return conn;
+// Connect to MongoDB once
+if (!mongoose.connection.readyState) {
+  mongoose.connect(process.env.MONGO_URI)
+    .then(() => console.log("✅ MongoDB connected"))
+    .catch((err) => console.error("❌ MongoDB connection error:", err));
 }
 
-// Export as serverless function
-export default async function handler(req, res) {
-  await connectDB(); // ensure MongoDB is connected
-  return app(req, res);
-}
+// ✅ Instead of app.listen, export the app
+export default app;

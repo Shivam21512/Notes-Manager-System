@@ -2,6 +2,7 @@
   "name": "notes-manager-server",
   "version": "1.0.0",
   "description": "Notes Manager backend (Express + MongoDB + JWT)",
+  "type": "module",
   "main": "src/server.js",
   "scripts": {
     "start": "node src/server.js",

@@ -1,15 +1,14 @@
-const express = require('express');
-const router = express.Router();
-const {
+import express from 'express';
+import { protect } from '../middleware/authMiddleware.js';
+import {
   createNote,
   getNotes,
   updateNote,
   deleteNote,
-} = require('../controllers/notesController');
+} from '../controllers/notesController.js';
 
-const { protect } = require('../middleware/authMiddleware');
+const router = express.Router();
 
-// All routes need authentication
 router.route('/')
   .get(protect, getNotes)
   .post(protect, createNote);
@@ -18,4 +17,4 @@ router.route('/:id')
   .put(protect, updateNote)
   .delete(protect, deleteNote);
 
-module.exports = router;
+export default router;
