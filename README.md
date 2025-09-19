@@ -56,24 +56,4 @@ NODE_ENV=development
 Run the backend server:
 
 npm run dev
-```bash
 
-### Frontend Setup
-
-1. **Navigate to frontend**
-```bash
-cd frontend
-
-Install dependencies
-
-npm install
-
-
-Create a .env file in frontend
-
-VITE_API_URL=<Your backend URL, e.g. https://notes-manager-system.vercel.app>
-
-
-Run the frontend
-
-npm run dev
