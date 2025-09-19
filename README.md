@@ -35,7 +35,6 @@ A full-stack Notes Management application built with **React**, **Vite**, **Expr
 
 1. Clone the repository and navigate to backend:
 
-```bash
 git clone <repo-url>
 cd backend
 
