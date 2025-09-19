@@ -56,7 +56,7 @@ NODE_ENV=development
 Run the backend server:
 
 npm run dev
-
+```bash
 
 ### Frontend Setup
 
